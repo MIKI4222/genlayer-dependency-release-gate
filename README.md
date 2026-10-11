@@ -8,7 +8,7 @@ Validators independently fetch npm package metadata, interpret a fixed release p
 
 - **Network:** GenLayer Bradbury Testnet
 - **Contract:** `0xC0CEa82374C4F1bcE296FCDF6818F10A1a20a1aA`
-- **Source file:** `genlayer_dependency_release_gate_public.py`
+- **Source file:** `contract.py`
 - **Default source:** `https://registry.npmjs.org/axios/latest`
 
 ## Why this is useful
@@ -144,9 +144,10 @@ get_status()         → FINALIZED
 ### 5. Claim authorization
 
 ```text
-claim_authorization("portal-review-demo")
+claim_authorization("portal-review-demo")   → returns "Deployment authorization granted for: portal-review-demo"
 get_status()         → CLAIMED
-get_claim_label()    → portal-review-demo
+
+The label is returned in the transaction result only. It is not stored in contract state, and the contract has no `get_claim_label()` view.
 ```
 
 The claim is intentionally public in this standalone demo so reviewers and permissionless adapters can complete the flow from any wallet.
